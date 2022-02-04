@@ -24,15 +24,15 @@ let AppModule = class AppModule {
 AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            config_1.ConfigModule.forRoot(),
+            config_1.ConfigModule.forRoot({ isGlobal: true }),
             auth_module_1.AuthModule,
             typeorm_1.TypeOrmModule.forRoot({
-                type: 'mysql',
-                host: 'localhost',
-                port: 3306,
-                username: 'root',
-                password: 'rjslrkt1358!',
-                database: 'mt_3.0',
+                type: process.env.DB_TYPE,
+                host: process.env.DB_HOST,
+                port: Number(process.env.DB_PORT),
+                username: process.env.DB_USERNAME,
+                password: process.env.DB_PASSWORD,
+                database: process.env.DB_DATABASE,
                 entities: [user_entity_1.User],
                 logging: true,
             }),

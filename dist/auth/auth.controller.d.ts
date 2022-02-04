@@ -3,5 +3,5 @@ export declare class AuthController {
     private readonly authService;
     constructor(authService: AuthService);
     appleLogin(): string;
-    appleLoginCallback(): Promise<string>;
+    appleLoginCallback(req: any): Promise<string>;
 }

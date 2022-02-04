@@ -8,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthController = void 0;
 const passport_1 = require("@nestjs/passport");
@@ -20,7 +23,8 @@ let AuthController = class AuthController {
     appleLogin() {
         return 'ok';
     }
-    async appleLoginCallback() {
+    async appleLoginCallback(req) {
+        console.log('req : ', req);
         return 'ok';
     }
 };
@@ -32,10 +36,11 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], AuthController.prototype, "appleLogin", null);
 __decorate([
-    (0, common_1.Get)('/apple/callback'),
+    (0, common_1.Post)('/apple/callback'),
     (0, common_1.UseGuards)((0, passport_1.AuthGuard)('apple')),
+    __param(0, (0, common_1.Req)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "appleLoginCallback", null);
 AuthController = __decorate([

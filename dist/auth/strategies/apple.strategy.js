@@ -24,8 +24,9 @@ let AppleStrategy = class AppleStrategy extends (0, passport_1.PassportStrategy)
         });
     }
     async validate(accessToken, refreshToken, idToken, profile, done) {
-        console.log(idToken);
-        console.log(profile);
+        console.log('idToken :', idToken);
+        console.log('profile :', profile);
+        done(null, idToken);
     }
 };
 AppleStrategy = __decorate([
